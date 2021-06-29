@@ -20,7 +20,21 @@ export class AppComponent {
 
     setTimeout(() => {
       this.listStatistiques.push(new Statistique('Test4', 'Test 4', '67', 'SUCCESS'));
-  }, 2000);
+    }, 2000);
+    this.listStatistiques=[];
+    fetch('https://stats.naminilamy.fr/')
+              .then((response) => {
+                  return response.json();
+              })
+              .then((data) => {
+                data.forEach((stats: { id: string; title: string; value: number; appreciation: string; })=>{
+                  this.listStatistiques.push(new Statistique('' + stats.id,'' +stats.title,''+stats.value,''+stats.appreciation));
+                })
+                  //console.log(data);
+              })
+              .catch((err) => {
+                  console.error(err);
+              });
   }
 
 }
