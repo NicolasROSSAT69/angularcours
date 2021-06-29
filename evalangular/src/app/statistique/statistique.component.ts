@@ -16,4 +16,16 @@ export class StatistiqueComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+  }
+
+  //fonction executé lors du click sur le bouton supp
+  supp(){
+    fetch('https://stats.naminilamy.fr/' + this.statistique.identifiant,
+        {method: 'DELETE'}).then(resp => {
+        if (resp.status === 200) {
+            this.ngOnDestroy();
+        }
+    });
+  }
 }
