@@ -30,7 +30,6 @@ export class AppComponent {
                 data.forEach((stats: { id: string; title: string; value: number; appreciation: string; })=>{
                   this.listStatistiques.push(new Statistique('' + stats.id,'' +stats.title,''+stats.value,''+stats.appreciation));
                 })
-                  //console.log(data);
               })
               .catch((err) => {
                   console.error(err);
