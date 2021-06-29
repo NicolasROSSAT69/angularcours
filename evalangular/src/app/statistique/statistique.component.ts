@@ -18,7 +18,6 @@ export class StatistiqueComponent implements OnInit {
 
   ngOnDestroy(): void {
   }
-
   //fonction executé lors du click sur le bouton supp
   supp(){
     fetch('https://stats.naminilamy.fr/' + this.statistique.identifiant,
@@ -27,5 +26,8 @@ export class StatistiqueComponent implements OnInit {
             this.ngOnDestroy();
         }
     });
+  }
+  couleur(): string {
+    return this.statistique.appreciation === 'ERROR' ? 'border: dashed red;' : 'border: dashed green;';
   }
 }
